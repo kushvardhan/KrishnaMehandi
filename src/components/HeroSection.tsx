@@ -1,8 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion,Variants,easeInOut } from 'framer-motion';
+import { MapPin, MessageCircle, Phone, Star } from 'lucide-react';
 import Image from 'next/image';
-import { Phone, MessageCircle, Star, MapPin } from 'lucide-react';
 
 export default function HeroSection() {
   const containerVariants = {
@@ -21,7 +21,7 @@ export default function HeroSection() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }
     }
   };
 

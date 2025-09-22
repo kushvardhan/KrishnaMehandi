@@ -1,93 +1,94 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import { X, ChevronLeft, ChevronRight, Eye } from 'lucide-react';
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, Eye, X } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState("all");
 
   // Placeholder images - these will be replaced with actual gallery images
   const galleryImages = [
     {
       id: 1,
-      src: 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=500&h=600&fit=crop',
-      alt: 'Bridal Mehndi Design',
-      category: 'bridal',
-      title: 'Intricate Bridal Design'
+      src: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=500&h=600&fit=crop",
+      alt: "Bridal Mehndi Design",
+      category: "bridal",
+      title: "Intricate Bridal Design",
     },
     {
       id: 2,
-      src: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=600&fit=crop',
-      alt: 'Arabic Mehndi Pattern',
-      category: 'arabic',
-      title: 'Arabic Floral Pattern'
+      src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=600&fit=crop",
+      alt: "Arabic Mehndi Pattern",
+      category: "arabic",
+      title: "Arabic Floral Pattern",
     },
     {
       id: 3,
-      src: 'https://images.unsplash.com/photo-1583391733981-24c4ec8c3d8b?w=500&h=600&fit=crop',
-      alt: 'Traditional Rajasthani Design',
-      category: 'traditional',
-      title: 'Rajasthani Mandala'
+      src: "https://images.unsplash.com/photo-1583391733981-24c4ec8c3d8b?w=500&h=600&fit=crop",
+      alt: "Traditional Rajasthani Design",
+      category: "traditional",
+      title: "Rajasthani Mandala",
     },
     {
       id: 4,
-      src: 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=500&h=600&fit=crop',
-      alt: 'Modern Mehndi Art',
-      category: 'modern',
-      title: 'Contemporary Design'
+      src: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=500&h=600&fit=crop",
+      alt: "Modern Mehndi Art",
+      category: "modern",
+      title: "Contemporary Design",
     },
     {
       id: 5,
-      src: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=600&fit=crop',
-      alt: 'Party Mehndi Design',
-      category: 'party',
-      title: 'Festival Special'
+      src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=600&fit=crop",
+      alt: "Party Mehndi Design",
+      category: "party",
+      title: "Festival Special",
     },
     {
       id: 6,
-      src: 'https://images.unsplash.com/photo-1583391733981-24c4ec8c3d8b?w=500&h=600&fit=crop',
-      alt: 'Bridal Hand Art',
-      category: 'bridal',
-      title: 'Bridal Elegance'
+      src: "https://images.unsplash.com/photo-1583391733981-24c4ec8c3d8b?w=500&h=600&fit=crop",
+      alt: "Bridal Hand Art",
+      category: "bridal",
+      title: "Bridal Elegance",
     },
     {
       id: 7,
-      src: 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=500&h=600&fit=crop',
-      alt: 'Arabic Style Mehndi',
-      category: 'arabic',
-      title: 'Arabic Geometric'
+      src: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=500&h=600&fit=crop",
+      alt: "Arabic Style Mehndi",
+      category: "arabic",
+      title: "Arabic Geometric",
     },
     {
       id: 8,
-      src: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=600&fit=crop',
-      alt: 'Traditional Pattern',
-      category: 'traditional',
-      title: 'Heritage Design'
+      src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=600&fit=crop",
+      alt: "Traditional Pattern",
+      category: "traditional",
+      title: "Heritage Design",
     },
     {
       id: 9,
-      src: 'https://images.unsplash.com/photo-1583391733981-24c4ec8c3d8b?w=500&h=600&fit=crop',
-      alt: 'Modern Minimalist',
-      category: 'modern',
-      title: 'Minimalist Art'
-    }
+      src: "https://images.unsplash.com/photo-1583391733981-24c4ec8c3d8b?w=500&h=600&fit=crop",
+      alt: "Modern Minimalist",
+      category: "modern",
+      title: "Minimalist Art",
+    },
   ];
 
   const categories = [
-    { id: 'all', name: 'All Designs' },
-    { id: 'bridal', name: 'Bridal' },
-    { id: 'arabic', name: 'Arabic' },
-    { id: 'traditional', name: 'Traditional' },
-    { id: 'modern', name: 'Modern' },
-    { id: 'party', name: 'Party' }
+    { id: "all", name: "All Designs" },
+    { id: "bridal", name: "Bridal" },
+    { id: "arabic", name: "Arabic" },
+    { id: "traditional", name: "Traditional" },
+    { id: "modern", name: "Modern" },
+    { id: "party", name: "Party" },
   ];
 
-  const filteredImages = filter === 'all' 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === filter);
+  const filteredImages =
+    filter === "all"
+      ? galleryImages
+      : galleryImages.filter((img) => img.category === filter);
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
@@ -105,7 +106,9 @@ export default function GallerySection() {
 
   const prevImage = () => {
     if (selectedImage !== null) {
-      setSelectedImage(selectedImage === 0 ? filteredImages.length - 1 : selectedImage - 1);
+      setSelectedImage(
+        selectedImage === 0 ? filteredImages.length - 1 : selectedImage - 1
+      );
     }
   };
 
@@ -115,9 +118,9 @@ export default function GallerySection() {
       opacity: 1,
       transition: {
         duration: 0.8,
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -125,8 +128,8 @@ export default function GallerySection() {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
+      transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
+    },
   };
 
   return (
@@ -157,8 +160,8 @@ export default function GallerySection() {
                 whileTap={{ scale: 0.95 }}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   filter === category.id
-                    ? 'bg-traditional-gold text-warm-green shadow-lg'
-                    : 'bg-warm-white text-warm-green hover:bg-traditional-gold/20 border border-traditional-gold/30'
+                    ? "bg-traditional-gold text-warm-green shadow-lg"
+                    : "bg-warm-white text-warm-green hover:bg-traditional-gold/20 border border-traditional-gold/30"
                 }`}
               >
                 {category.name}
@@ -191,7 +194,7 @@ export default function GallerySection() {
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  
+
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-warm-green/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-4 left-4 right-4">
@@ -238,7 +241,7 @@ export default function GallerySection() {
                   height={1000}
                   className="max-w-full max-h-[90vh] object-contain rounded-lg"
                 />
-                
+
                 {/* Close Button */}
                 <button
                   onClick={closeLightbox}
@@ -285,8 +288,9 @@ export default function GallerySection() {
         >
           <div className="bg-traditional-gold/10 border border-traditional-gold/30 rounded-2xl p-6 max-w-2xl mx-auto">
             <p className="text-warm-green/80 text-sm">
-              <strong>Note:</strong> This gallery currently shows placeholder images. 
-              You can easily update these with your actual mehndi work photos through the admin panel.
+              <strong>Note:</strong> This gallery currently shows placeholder
+              images. You can easily update these with your actual mehndi work
+              photos through the admin panel.
             </p>
           </div>
         </motion.div>
