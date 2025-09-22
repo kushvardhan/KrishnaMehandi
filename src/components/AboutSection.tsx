@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { MapPin, Award, Users, Clock, Palette, Heart } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Award, Heart, MapPin, Palette, Users } from "lucide-react";
+import Image from "next/image";
 
 export default function AboutSection() {
   const services = [
-    { name: 'Colorful Mehandi', icon: '🌈' },
-    { name: 'Bombay Style', icon: '🏙️' },
-    { name: 'Marwari Designs', icon: '👑' },
-    { name: 'Arabian Patterns', icon: '🕌' },
-    { name: 'Silver Mehandi', icon: '✨' },
-    { name: 'Golden Mehandi', icon: '🌟' }
+    { name: "Colorful Mehandi", icon: "🌈" },
+    { name: "Bombay Style", icon: "🏙️" },
+    { name: "Marwari Designs", icon: "👑" },
+    { name: "Arabian Patterns", icon: "🕌" },
+    { name: "Silver Mehandi", icon: "✨" },
+    { name: "Golden Mehandi", icon: "🌟" },
   ];
 
   const stats = [
-    { icon: Award, number: '10+', label: 'Years Experience' },
-    { icon: Users, number: '500+', label: 'Happy Clients' },
-    { icon: Palette, number: '1000+', label: 'Designs Created' },
-    { icon: Heart, number: '100%', label: 'Satisfaction Rate' }
+    { icon: Award, number: "10+", label: "Years Experience" },
+    { icon: Users, number: "500+", label: "Happy Clients" },
+    { icon: Palette, number: "1000+", label: "Designs Created" },
+    { icon: Heart, number: "100%", label: "Satisfaction Rate" },
   ];
 
   const containerVariants = {
@@ -27,9 +27,9 @@ export default function AboutSection() {
       opacity: 1,
       transition: {
         duration: 0.8,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -37,12 +37,15 @@ export default function AboutSection() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
+      transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+    },
   };
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-warm-white to-cream">
+    <section
+      id="about"
+      className="py-20 bg-gradient-to-b from-warm-white to-cream"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           variants={containerVariants}
@@ -57,16 +60,14 @@ export default function AboutSection() {
             </h2>
             <div className="w-24 h-1 bg-traditional-gold mx-auto mb-6"></div>
             <p className="text-lg text-warm-green/80 max-w-2xl mx-auto">
-              Bringing traditional artistry and modern elegance to every celebration
+              Bringing traditional artistry and modern elegance to every
+              celebration
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             {/* Owner Image */}
-            <motion.div
-              variants={itemVariants}
-              className="relative"
-            >
+            <motion.div variants={itemVariants} className="relative">
               <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                 <Image
                   src="/ownerImage/KrishnaMehandi-Owner.jpeg"
@@ -77,7 +78,7 @@ export default function AboutSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-warm-green/20 to-transparent"></div>
               </div>
-              
+
               {/* Floating Badge */}
               <motion.div
                 initial={{ scale: 0 }}
@@ -102,13 +103,24 @@ export default function AboutSection() {
 
               <div className="space-y-4 text-warm-green/80 leading-relaxed">
                 <p>
-                  With over a decade of experience in the art of Mehandi, Dushyant Singh has established Krishna Mehandi Artist as one of Noida's most trusted names in bridal and ceremonial henna artistry.
+                  With over a decade of experience in the art of Mehandi,
+                  Dushyant Singh has established Krishna Mehandi Artist as one
+                  of Noida&apos;s most trusted names in bridal and ceremonial henna
+                  artistry.
                 </p>
                 <p>
-                  <strong className="text-warm-green">Specializing in arrangements for marriages & other celebrations,</strong> our studio brings together traditional techniques with contemporary designs to create stunning, personalized mehandi experiences.
+                  <strong className="text-warm-green">
+                    Specializing in arrangements for marriages & other
+                    celebrations,
+                  </strong>{" "}
+                  our studio brings together traditional techniques with
+                  contemporary designs to create stunning, personalized mehandi
+                  experiences.
                 </p>
                 <p>
-                  From intimate family gatherings to grand wedding celebrations, we ensure every design tells a unique story and creates lasting memories.
+                  From intimate family gatherings to grand wedding celebrations,
+                  we ensure every design tells a unique story and creates
+                  lasting memories.
                 </p>
               </div>
 
@@ -126,7 +138,8 @@ export default function AboutSection() {
                       Our Studio Location
                     </h4>
                     <p className="text-warm-green/80">
-                      Amrapali Zodiac Market, Sector-120<br />
+                      Amrapali Zodiac Market, Sector-120
+                      <br />
                       Near Apollo Medical, Noida, UP - 201301
                     </p>
                   </div>
