@@ -1,8 +1,27 @@
+import AboutSection from "@/components/AboutSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
+import GallerySection from "@/components/GallerySection";
+import Header from "@/components/Header";
+import HeroSection from "@/components/HeroSection";
+import ReviewsSection from "@/components/ReviewsSection";
+import ServicesSection from "@/components/ServicesSection";
+import StructuredData from "@/components/StructuredData";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-     <h1>HEY YOO</h1>
-    </div>
+    <>
+      <StructuredData />
+      <Header />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <GallerySection />
+        <ServicesSection />
+        <ReviewsSection />
+        <ContactSection />
+      </main>
+      <Footer />
+    </>
   );
 }
