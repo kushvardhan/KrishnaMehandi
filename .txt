@@ -1,5 +1,157 @@
+
+Build a Next.js 14 website with App Router and Tailwind CSS configured. 
+The website is for "Krishna Mehandi Artist" based in Noida. 
+
+Brand identity:
+- Logo file: public/logo/KrishnaMehandiLogo.png 
+- Owner photo: public/ownerImage/KrishnaMehandi-Owner.jpeg 
+- Favicon: use the same logo as browser icon.
+- Brand colors: deep warm green (#064e3b), traditional gold (#d4af37), accent maroon (#7f1d1d).
+- Fonts: Use elegant serif fonts like "Cinzel" or "Prata" for headings, and a clean modern serif/sans for body text.
+
+Design & Styling:
+- Elegant, sleek, traditional Indian theme with mehndi-inspired background textures and patterns.
+- Soft floral or mandala mehndi backgrounds as section dividers.
+- Responsive, mobile-first layout.
+- Light animations (fade-ins, hover effects, smooth transitions) using Framer Motion.
+- Tailwind + shadcn/ui components for cards, buttons, modals.
+- Smooth scrolling enabled.
+
+Website Structure:
+1. Hero Section:
+   - Beautiful mehndi-inspired background with hero text: "Krishna Mehandi Artist - From Designs to Celebrations".
+   - Call-to-action buttons: "Book on WhatsApp" and "Call Now".
+   - Display logo and tagline elegantly.
+2. About Section:
+   - Show owner photo with introduction text.
+   - "Specializes in: Arrangements for Marriage & other occasions".
+   - Services list: Colorful Mehandi, Bombay, Marwari, Arabian, Silver, Golden Mehandi.
+   - Location: Amrapali Zodiac Market, Sector-120, Near Apollo Medical, Noida, UP - 201301.
+3. Gallery Section:
+   - Placeholder images (use free stock mehndi images for now).
+   - Grid layout, optimized with next/image.
+   - Space reserved for user to update gallery later.
+4. Services Section:
+   - Cards for Bridal Mehandi, Party Mehandi, Custom Designs.
+   - Each card has a subtle animation on hover.
+5. Reviews Section:
+   - Genuine-looking Indian names with photos.
+   - Reviews in Hindi, English, and Hinglish (realistic mix).
+   - Cards styled with soft traditional patterns.
+6. Contact Section:
+   - WhatsApp link: https://wa.me/919873382317
+   - Call link: tel:+919873382317
+   - Email: ds4393645@gmail.com
+   - Google Map embed for the location in Noida.
+7. Footer:
+   - Business info + quick links.
+   - Subtle credit: "Designed & Developed by Kush Vardhan" linking to https://kush-personal-portfolio-my-portfolio.vercel.app/
+
+SEO:
+- Metadata optimized for: "Mehandi Artist in Noida", "Bridal Mehandi Noida", "Best Mehndi Designer in Noida", "Traditional Mehndi Designs Noida and NCR".
+- OpenGraph and structured data (Local Business schema with name, address, contact, services).
+- Fast-loading, optimized images.
+- Pre-render with Next.js for SEO.
+- Include developer credit in metadata as author: Kush Vardhan.
+
+Extras:
+- Deploy-ready for Vercel.
+- Tailwind config includes custom theme colors (warm green, gold, maroon).
+- Include subtle background mehndi vector patterns.
+- Include smooth hover animations, card flips, and scroll-triggered fade-ins.
+
+
+
+🎯 Primary Brand Keywords
+
+Krishna Mehandi Artist
+
+Krishna Mehandi Noida
+
+Krishna Mehandi Artist in Noida
+
+Krishna Mehndi Designer Noida
+
+Krishna Bridal Mehandi Artist
+
+👰 Bridal / Wedding Keywords
+
+Bridal Mehandi Artist in Noida
+
+Best Bridal Mehndi in Noida
+
+Bridal Mehndi Designer Near Me
+
+Top Bridal Mehandi Artist Noida
+
+Wedding Mehndi Artist in Noida
+
+💃 Occasion-Based Keywords
+
+Karwa Chauth Mehndi Artist Noida
+
+Eid Mehndi Artist in Noida
+
+Teej Mehndi Designer Noida
+
+Diwali Mehndi Artist Near Me
+
+Festival Mehandi Designer Noida
+
+🌿 Service Style Keywords
+
+Arabic Mehndi Artist in Noida
+
+Rajasthani Mehndi Designer Noida
+
+Indian Mehndi Artist Near Me
+
+Modern Mehndi Artist in Noida
+
+Stylish Mehandi Designer Noida
+
+Portrait Mehndi Artist Noida
+
+📍 Local SEO Keywords
+
+Mehndi Artist in Noida Sector 18
+
+Mehndi Designer in Noida Extension
+
+Mehndi Artist Near GIP Mall Noida
+
+Best Mehndi Artist Near Me (Noida location targeting)
+
+Mehndi Artist in Greater Noida
+
+⭐ High-Value Keywords (People Search Most)
+
+Best Mehandi Artist in Noida
+
+Affordable Mehndi Artist in Noida
+
+Professional Mehndi Designer Noida
+
+Mehndi Artist for Bridal at Home Noida
+
+Top Rated Mehndi Artist Noida
+
+👉 Tip: Use a mix of brand + service + location keywords on your:
+
+Website (title, meta description, blogs)
+
+Google Business Profile
+
+Instagram & Facebook hashtags
+
+LinkedIn business page posts
+
+
+
 name of the website: Krishna Mehandi 
 the brand name : Krishna Mehandi Artist
+name of the brand owner: Dushyant Singh
+instagram id : https://www.instagram.com/krishnamehandi2024?utm_source=qr&igsh=ZTdvcXUwcjVqbWEw
 whatsapp and call number : +91 9873382317
 gmail: ds4393645@gmail.com
 speacize in : Arrangements for marraige & other ( fill some thing on your own )
@@ -12,8 +164,11 @@ and the logo is here : public\logo\KrishnaMehandiLogo.png
 add the logo to the broswer tab icon too 
 
 also leave the place for galler showpeace image i'll update it soon (as for now take any images from google )
+
+Please share your experience by writing a review of my work on my WedMeGood profile: https://www.wedmegood.com/profile/Krishna-Mehandi-Art-1757982/reviews
 also add the review section  too, where it give the geniune reviews with photos with geniune Indian name with hindi,english, Hinglish messages and review
 
+Add mehandi patterns, bg-images , effect, animations to make this even better
 
 make the seo on the next level 
 

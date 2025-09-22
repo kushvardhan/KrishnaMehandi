@@ -194,7 +194,7 @@ export default function ReviewsSection() {
 
                       {/* Review Text */}
                       <blockquote className="text-lg md:text-xl text-warm-green/90 mb-6 leading-relaxed font-medium">
-                        "{reviews[currentReview].review}"
+                        " &ldquo;{reviews[currentReview].review}&rdquo;"
                       </blockquote>
 
                       {/* Client Info */}
@@ -305,8 +305,8 @@ export default function ReviewsSection() {
               Share Your Experience
             </h3>
             <p className="text-warm-green/80 mb-6 max-w-2xl mx-auto">
-              Had a wonderful experience with Krishna Mehandi Artist? We'd love
-              to hear from you! Please share your review on our WedMeGood
+              Had a wonderful experience with Krishna Mehandi Artist? We&apos;d
+              love to hear from you! Please share your review on our WedMeGood
               profile.
             </p>
             <motion.a

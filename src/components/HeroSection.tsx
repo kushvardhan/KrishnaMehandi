@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { motion,Variants,easeInOut } from 'framer-motion';
-import { MapPin, MessageCircle, Phone, Star } from 'lucide-react';
-import Image from 'next/image';
+import { motion } from "framer-motion";
+import { MapPin, MessageCircle, Phone, Star } from "lucide-react";
+import Image from "next/image";
 
 export default function HeroSection() {
   const containerVariants = {
@@ -11,9 +11,9 @@ export default function HeroSection() {
       opacity: 1,
       transition: {
         duration: 0.8,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -21,44 +21,54 @@ export default function HeroSection() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }
-    }
-  };
-
-  const floatingVariants = {
-    animate: {
-      y: [-10, 10, -10],
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+      transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+    },
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
       {/* Background with Mehndi Pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-warm-white via-cream to-soft-beige">
         <div className="absolute inset-0 mehndi-pattern-bg opacity-30"></div>
         <div className="absolute inset-0 mehndi-mandala-bg"></div>
-        
+
         {/* Decorative Elements */}
         <motion.div
-          variants={floatingVariants}
-          animate="animate"
+          animate={{
+            y: [-10, 10, -10],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           className="absolute top-20 left-10 w-20 h-20 bg-traditional-gold/10 rounded-full blur-xl"
         />
         <motion.div
-          variants={floatingVariants}
-          animate="animate"
-          style={{ animationDelay: '2s' }}
+          animate={{
+            y: [-10, 10, -10],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
           className="absolute bottom-32 right-16 w-32 h-32 bg-warm-green/10 rounded-full blur-xl"
         />
         <motion.div
-          variants={floatingVariants}
-          animate="animate"
-          style={{ animationDelay: '1s' }}
+          animate={{
+            y: [-10, 10, -10],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
           className="absolute top-1/3 right-20 w-16 h-16 bg-accent-maroon/10 rounded-full blur-xl"
         />
       </div>
@@ -99,7 +109,7 @@ export default function HeroSection() {
             className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-warm-green mb-6"
           >
             Krishna Mehandi
-            <span className="block text-traditional-gold gold-shimmer bg-clip-text text-transparent">
+            <span className="block gold-shimmer bg-clip-text text-transparent">
               Artist
             </span>
           </motion.h1>
@@ -117,7 +127,8 @@ export default function HeroSection() {
             variants={itemVariants}
             className="text-lg md:text-xl text-warm-green/80 mb-8 max-w-2xl mx-auto leading-relaxed"
           >
-            Professional Bridal Mehndi Designer in Noida • Specializing in Arabic, Rajasthani & Modern Designs
+            Professional Bridal Mehndi Designer in Noida • Specializing in
+            Arabic, Rajasthani & Modern Designs
           </motion.p>
 
           {/* Location Badge */}
@@ -145,7 +156,7 @@ export default function HeroSection() {
               <MessageCircle size={24} className="group-hover:animate-bounce" />
               <span>Book on WhatsApp</span>
             </motion.a>
-            
+
             <motion.a
               href="tel:+919873382317"
               whileHover={{ scale: 1.05, y: -2 }}
@@ -163,9 +174,17 @@ export default function HeroSection() {
             className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto"
           >
             {[
-              { icon: '🎨', title: 'Expert Artistry', desc: '10+ Years Experience' },
-              { icon: '👰', title: 'Bridal Specialist', desc: 'Wedding Perfection' },
-              { icon: '⭐', title: 'Top Rated', desc: '500+ Happy Clients' }
+              {
+                icon: "🎨",
+                title: "Expert Artistry",
+                desc: "10+ Years Experience",
+              },
+              {
+                icon: "👰",
+                title: "Bridal Specialist",
+                desc: "Wedding Perfection",
+              },
+              { icon: "⭐", title: "Top Rated", desc: "500+ Happy Clients" },
             ].map((feature, index) => (
               <motion.div
                 key={index}

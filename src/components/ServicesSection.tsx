@@ -143,7 +143,7 @@ export default function ServicesSection() {
 
           {/* Main Services */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-            {services.map((service, index) => (
+            {services.map((service) => (
               <motion.div
                 key={service.id}
                 variants={cardVariants}
@@ -249,7 +249,7 @@ export default function ServicesSection() {
                 Ready to Book Your Session?
               </h3>
               <p className="text-warm-white/90 mb-8 max-w-2xl mx-auto">
-                Contact us today to schedule your mehndi appointment. We're
+                Contact us today to schedule your mehndi appointment. We&apos;re
                 available for home visits and studio sessions across Noida and
                 nearby areas.
               </p>

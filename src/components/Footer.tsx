@@ -1,41 +1,40 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Instagram, 
-  MessageCircle,
+import { motion } from "framer-motion";
+import {
+  ExternalLink,
   Heart,
-  ExternalLink
-} from 'lucide-react';
+  Instagram,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+} from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Gallery', href: '#gallery' },
-    { name: 'Services', href: '#services' },
-    { name: 'Reviews', href: '#reviews' },
-    { name: 'Contact', href: '#contact' },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Gallery", href: "#gallery" },
+    { name: "Services", href: "#services" },
+    { name: "Reviews", href: "#reviews" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const services = [
-    'Bridal Mehndi',
-    'Arabic Mehndi',
-    'Rajasthani Mehndi',
-    'Party Mehndi',
-    'Festival Mehndi',
-    'Custom Designs'
+    "Bridal Mehndi",
+    "Arabic Mehndi",
+    "Rajasthani Mehndi",
+    "Party Mehndi",
+    "Festival Mehndi",
+    "Custom Designs",
   ];
 
   const handleNavClick = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -66,7 +65,9 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm text-warm-white/80 leading-relaxed">
-              Professional Bridal Mehndi Designer in Noida, specializing in traditional and modern henna art for weddings and special occasions.
+              Professional Bridal Mehndi Designer in Noida, specializing in
+              traditional and modern henna art for weddings and special
+              occasions.
             </p>
             <div className="flex space-x-4">
               <motion.a
@@ -147,14 +148,21 @@ export default function Footer() {
             </h4>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <MapPin size={16} className="text-traditional-gold mt-1 flex-shrink-0" />
+                <MapPin
+                  size={16}
+                  className="text-traditional-gold mt-1 flex-shrink-0"
+                />
                 <p className="text-sm text-warm-white/80">
-                  Amrapali Zodiac Market, Sector-120,<br />
+                  Amrapali Zodiac Market, Sector-120,
+                  <br />
                   Near Apollo Medical, Noida, UP - 201301
                 </p>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone size={16} className="text-traditional-gold flex-shrink-0" />
+                <Phone
+                  size={16}
+                  className="text-traditional-gold flex-shrink-0"
+                />
                 <a
                   href="tel:+919873382317"
                   className="text-sm text-warm-white/80 hover:text-traditional-gold transition-colors duration-300"
@@ -163,7 +171,10 @@ export default function Footer() {
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail size={16} className="text-traditional-gold flex-shrink-0" />
+                <Mail
+                  size={16}
+                  className="text-traditional-gold flex-shrink-0"
+                />
                 <a
                   href="mailto:ds4393645@gmail.com"
                   className="text-sm text-warm-white/80 hover:text-traditional-gold transition-colors duration-300"
@@ -191,7 +202,7 @@ export default function Footer() {
                 Owner: Dushyant Singh
               </p>
             </div>
-            
+
             <div className="flex items-center space-x-2 text-sm text-warm-white/80">
               <span>Designed & Developed with</span>
               <Heart size={14} className="text-accent-maroon fill-current" />
