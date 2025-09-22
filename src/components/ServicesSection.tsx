@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { easeInOut, motion, Variants } from "framer-motion";
 import { Clock, Crown, Palette, Sparkles, Star } from "lucide-react";
 
 export default function ServicesSection() {
@@ -99,21 +99,21 @@ export default function ServicesSection() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: { duration: 0.6, ease: easeInOut },
     },
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: { duration: 0.5, ease: easeInOut },
     },
   };
 

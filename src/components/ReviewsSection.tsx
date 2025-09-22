@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, easeInOut, motion, Variants } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -113,12 +113,12 @@ export default function ReviewsSection() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: { duration: 0.6, ease: easeInOut },
     },
   };
 
@@ -194,7 +194,7 @@ export default function ReviewsSection() {
 
                       {/* Review Text */}
                       <blockquote className="text-lg md:text-xl text-warm-green/90 mb-6 leading-relaxed font-medium">
-                        " &ldquo;{reviews[currentReview].review}&rdquo;"
+                        &ldquo;{reviews[currentReview].review}&rdquo;
                       </blockquote>
 
                       {/* Client Info */}

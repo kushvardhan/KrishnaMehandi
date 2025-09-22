@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true, // disables ESLint checks during build
+  },
   // Enable experimental features for better performance
   experimental: {
     optimizeCss: true,

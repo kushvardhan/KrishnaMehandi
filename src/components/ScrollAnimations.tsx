@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  easeInOut,
+  motion,
+  useScroll,
+  useTransform,
+  Variants,
+} from "framer-motion";
 import { useRef } from "react";
 
 export const ParallaxSection = ({
@@ -149,12 +155,12 @@ export const StaggeredItem = ({
   children: React.ReactNode;
   className?: string;
 }) => {
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: { duration: 0.6, ease: easeInOut },
     },
   };
 

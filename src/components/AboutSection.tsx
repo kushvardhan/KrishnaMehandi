@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { easeInOut, motion, Variants } from "framer-motion";
 import { Award, Heart, MapPin, Palette, Users } from "lucide-react";
 import Image from "next/image";
 
@@ -32,12 +32,12 @@ export default function AboutSection() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: { duration: 0.6, ease: easeInOut },
     },
   };
 
@@ -105,8 +105,8 @@ export default function AboutSection() {
                 <p>
                   With over a decade of experience in the art of Mehandi,
                   Dushyant Singh has established Krishna Mehandi Artist as one
-                  of Noida&apos;s most trusted names in bridal and ceremonial henna
-                  artistry.
+                  of Noida&apos;s most trusted names in bridal and ceremonial
+                  henna artistry.
                 </p>
                 <p>
                   <strong className="text-warm-green">
