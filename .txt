@@ -1,0 +1,22 @@
+name of the website: Krishna Mehandi 
+the brand name : Krishna Mehandi Artist
+whatsapp and call number : +91 9873382317
+gmail: ds4393645@gmail.com
+speacize in : Arrangements for marraige & other ( fill some thing on your own )
+we have colorfull mehandi
+Bombay, Marwari, Arabian, Silver, Golder Mehandi
+address : Amrapali Zodiac Market, Sector-120, Near by Apollo Medical, Noida, UP , pincode: 201301
+the image of the owner : public\ownerImage\KrishnaMehandi-Owner.jpeg
+
+and the logo is here : public\logo\KrishnaMehandiLogo.png
+add the logo to the broswer tab icon too 
+
+also leave the place for galler showpeace image i'll update it soon (as for now take any images from google )
+also add the review section  too, where it give the geniune reviews with photos with geniune Indian name with hindi,english, Hinglish messages and review
+
+
+make the seo on the next level 
+
+also add the developer credit in seo and website too. 
+Footer with subtle credit: "Designed & Developed by Kush Vardhan" linking to 
+     https://kush-personal-portfolio-my-portfolio.vercel.app/
