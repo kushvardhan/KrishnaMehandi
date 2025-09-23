@@ -1,11 +1,14 @@
-@import "tailwindcss";
+/* Import Google Fonts first */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Prata&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap");
 
+/* Import our custom styles */
+@import "./components.css";
+
+/* CSS Variables */
 :root {
   --background: #fefefe;
   --foreground: #1a1a1a;
 
-  /* Brand Colors */
   --warm-green: #064e3b;
   --warm-green-light: #065f46;
   --warm-green-dark: #022c22;
@@ -16,38 +19,16 @@
   --accent-maroon-light: #991b1b;
   --accent-maroon-dark: #450a0a;
 
-  /* Neutral Colors */
   --cream: #faf7f0;
   --soft-beige: #f5f1e8;
   --warm-white: #fffef9;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-  /* Brand Colors */
-  --color-warm-green: var(--warm-green);
-  --color-warm-green-light: var(--warm-green-light);
-  --color-warm-green-dark: var(--warm-green-dark);
-  --color-traditional-gold: var(--traditional-gold);
-  --color-traditional-gold-light: var(--traditional-gold-light);
-  --color-traditional-gold-dark: var(--traditional-gold-dark);
-  --color-accent-maroon: var(--accent-maroon);
-  --color-accent-maroon-light: var(--accent-maroon-light);
-  --color-accent-maroon-dark: var(--accent-maroon-dark);
-  --color-cream: var(--cream);
-  --color-soft-beige: var(--soft-beige);
-  --color-warm-white: var(--warm-white);
-
-  /* Typography */
   --font-heading: "Cinzel", serif;
   --font-elegant: "Prata", serif;
   --font-body: "Crimson Text", serif;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
+/* Global body styles */
 body {
   background: var(--background);
   color: var(--foreground);
@@ -55,7 +36,6 @@ body {
   line-height: 1.6;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
@@ -64,21 +44,18 @@ html {
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background: var(--soft-beige);
 }
-
 ::-webkit-scrollbar-thumb {
   background: var(--warm-green);
   border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: var(--warm-green-dark);
 }
 
-/* Mehndi pattern background utilities */
+/* Background patterns */
 .mehndi-pattern-bg {
   background-image: radial-gradient(
       circle at 25% 25%,
@@ -97,11 +74,10 @@ html {
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23064e3b' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3Ccircle cx='30' cy='30' r='14'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
-/* Elegant animations */
+/* Animations */
 .fade-in {
   animation: fadeIn 0.6s ease-in-out;
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -116,7 +92,6 @@ html {
 .slide-up {
   animation: slideUp 0.8s ease-out;
 }
-
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -128,17 +103,14 @@ html {
   }
 }
 
-/* Hover effects */
 .hover-lift {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .hover-lift:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(6, 78, 59, 0.15);
 }
 
-/* Gold shimmer effect */
 .gold-shimmer {
   background: linear-gradient(
     90deg,
@@ -149,7 +121,6 @@ html {
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
 }
-
 @keyframes shimmer {
   0%,
   100% {
