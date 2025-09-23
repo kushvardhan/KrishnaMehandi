@@ -8,11 +8,11 @@ import {
   Quote,
   Star,
 } from "lucide-react";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function ReviewsSection() {
   const [currentReview, setCurrentReview] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const reviews = [
     {
@@ -20,72 +20,66 @@ export default function ReviewsSection() {
       name: "Priya Sharma",
       location: "Sector 62, Noida",
       rating: 5,
-      image:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
       review:
         "Krishna ji ne mere wedding ke liye bahut hi sundar mehndi lagayi! Design bilkul perfect thi aur color bhi bahut accha aaya. Highly recommended! 💕",
       occasion: "Wedding",
       language: "hinglish",
+      mehandiImage: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.01.jpeg",
     },
     {
       id: 2,
       name: "Anjali Gupta",
       location: "Greater Noida",
       rating: 5,
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       review:
         "Absolutely amazing work! The bridal mehndi was so intricate and beautiful. Krishna ji is very professional and the designs are unique. Best mehndi artist in Noida!",
       occasion: "Bridal",
       language: "english",
+      mehandiImage: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.02.jpeg",
     },
     {
       id: 3,
       name: "Kavita Agarwal",
       location: "Sector 120, Noida",
       rating: 5,
-      image:
-        "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face",
       review:
         "मेरी बेटी की शादी के लिए कृष्णा जी से मेहंदी लगवाई थी। बहुत ही सुंदर और बारीक काम किया है। सभी guests ने तारीफ की। धन्यवाद!",
       occasion: "Wedding",
       language: "hindi",
+      mehandiImage: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.05.jpeg",
     },
     {
       id: 4,
       name: "Sneha Verma",
       location: "Sector 18, Noida",
       rating: 5,
-      image:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
       review:
         "Karwa Chauth ke liye book kiya tha. Time pe aaye aur bahut jaldi aur sundar mehndi lagai. Price bhi reasonable hai. Will definitely book again for festivals!",
       occasion: "Festival",
       language: "hinglish",
+      mehandiImage: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.06.jpeg",
     },
     {
       id: 5,
       name: "Ritu Singh",
       location: "Indirapuram",
       rating: 5,
-      image:
-        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face",
       review:
         "Excellent service! The Arabic mehndi design was exactly what I wanted. Very clean work and the color stayed for more than 2 weeks. Highly professional!",
       occasion: "Party",
       language: "english",
+      mehandiImage: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.12.jpeg",
     },
     {
       id: 6,
       name: "Meera Jain",
       location: "Sector 76, Noida",
       rating: 5,
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       review:
         "Krishna ji ka kaam bahut hi badhiya hai! Mere engagement ke liye perfect mehndi lagai. Design unique thi aur sabko pasand aayi. Thank you so much! ✨",
       occasion: "Engagement",
       language: "hinglish",
+      mehandiImage: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.14.jpeg",
     },
   ];
 
