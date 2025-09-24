@@ -118,11 +118,8 @@ export default function ServicesSection() {
   };
 
   return (
-    <section
-      id="services"
-      className="py-20 bg-gradient-to-b from-cream to-warm-white"
-    >
-      <div className="container mx-auto px-4">
+    <section id="services" className="services-section">
+      <div className="services-container">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -130,82 +127,64 @@ export default function ServicesSection() {
           viewport={{ once: true, amount: 0.3 }}
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-warm-green mb-4">
-              Our Services
-            </h2>
-            <div className="w-24 h-1 bg-traditional-gold mx-auto mb-6"></div>
-            <p className="text-lg text-warm-green/80 max-w-2xl mx-auto">
+          <motion.div variants={itemVariants} className="services-header">
+            <h2 className="services-title">Our Services</h2>
+            <div className="services-divider"></div>
+            <p className="services-subtitle">
               Professional mehndi services for every occasion, crafted with
               passion and precision
             </p>
           </motion.div>
 
           {/* Main Services */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          <div className="services-grid">
             {services.map((service) => (
               <motion.div
                 key={service.id}
                 variants={cardVariants}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className="relative group"
+                className={`service-card ${service.popular ? "popular" : ""}`}
               >
                 {/* Popular Badge */}
                 {service.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-accent-maroon text-white px-4 py-2 rounded-full text-sm font-medium flex items-center space-x-1">
-                      <Star size={14} fill="currentColor" />
-                      <span>Most Popular</span>
-                    </div>
+                  <div className="service-popular-badge">
+                    <Star size={14} fill="currentColor" />
+                    <span>Most Popular</span>
                   </div>
                 )}
+                {/* Header with Gradient */}
+                <div
+                  className={`service-header bg-gradient-to-r ${service.gradient}`}
+                >
+                  <service.icon className="service-icon" />
+                  <h3 className="service-title">{service.title}</h3>
+                  <p className="service-description">{service.description}</p>
+                </div>
 
-                <div className="bg-warm-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-traditional-gold/10 hover:border-traditional-gold/30">
-                  {/* Header with Gradient */}
-                  <div
-                    className={`bg-gradient-to-r ${service.gradient} p-8 text-white relative overflow-hidden`}
-                  >
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
-                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
-
-                    <div className="relative z-10">
-                      <service.icon size={48} className="mb-4" />
-                      <h3 className="text-2xl font-heading font-bold mb-2">
-                        {service.title}
-                      </h3>
-                      <p className="text-white/90 text-sm">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-8">
-                    <ul className="space-y-3 mb-6">
-                      {service.features.map((feature, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-center space-x-3 text-warm-green/80"
-                        >
-                          <div className="w-2 h-2 bg-traditional-gold rounded-full flex-shrink-0"></div>
-                          <span className="text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex items-center justify-between">
-                      <div className="text-2xl font-heading font-bold text-warm-green">
-                        {service.price}
+                {/* Content */}
+                <div className="service-content">
+                  <div className="service-features">
+                    {service.features.map((feature, idx) => (
+                      <div key={idx} className="service-feature">
+                        <div className="service-feature-icon">•</div>
+                        <span>{feature}</span>
                       </div>
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="bg-traditional-gold text-warm-green px-6 py-3 rounded-full font-medium hover:bg-traditional-gold-light transition-colors duration-300"
-                      >
-                        Book Now
-                      </motion.button>
-                    </div>
+                    ))}
                   </div>
+
+                  <div className="service-pricing">
+                    <div className="service-price">{service.price}</div>
+                    <div className="service-price-note">Starting from</div>
+                  </div>
+
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="service-cta"
+                  >
+                    <span>Book Now</span>
+                    <ArrowRight size={16} />
+                  </motion.button>
                 </div>
               </motion.div>
             ))}

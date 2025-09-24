@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, easeInOut, motion, Variants } from "framer-motion";
-import { ChevronLeft, ChevronRight, Eye, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -279,35 +279,31 @@ export default function GallerySection() {
   };
 
   return (
-    <section id="gallery" className="py-20 bg-soft-beige mehndi-mandala-bg">
-      <div className="container mx-auto px-4">
+    <section id="gallery" className="gallery-section">
+      <div className="gallery-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="gallery-header"
         >
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-warm-green mb-4">
-            Our Gallery
-          </h2>
-          <div className="w-24 h-1 bg-traditional-gold mx-auto mb-6"></div>
-          <p className="text-lg text-warm-green/80 max-w-2xl mx-auto mb-8">
+          <h2 className="gallery-title">Our Gallery</h2>
+          <div className="gallery-divider"></div>
+          <p className="gallery-subtitle">
             Explore our stunning collection of mehndi designs and artistry
           </p>
 
           {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
+          <div className="gallery-categories">
             {categories.map((category) => (
               <motion.button
                 key={category.id}
                 onClick={() => setFilter(category.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  filter === category.id
-                    ? "bg-traditional-gold text-warm-green shadow-lg"
-                    : "bg-warm-white text-warm-green hover:bg-traditional-gold/20 border border-traditional-gold/30"
+                className={`gallery-category-btn ${
+                  filter === category.id ? "active" : ""
                 }`}
               >
                 {category.name}
@@ -322,7 +318,7 @@ export default function GallerySection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6"
+          className="gallery-grid"
         >
           <AnimatePresence>
             {displayedImages.map((image, index) => (
@@ -330,31 +326,22 @@ export default function GallerySection() {
                 key={image.id}
                 variants={itemVariants}
                 layout
-                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                className="gallery-item"
                 onClick={() => openLightbox(index)}
               >
-                <div className="aspect-[4/5] relative">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="gallery-image"
+                />
 
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-warm-green/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-white font-heading font-semibold text-lg mb-2">
-                        {image.title}
-                      </h3>
-                      <div className="flex items-center justify-between">
-                        <span className="text-traditional-gold text-sm font-medium capitalize">
-                          {image.category}
-                        </span>
-                        <div className="bg-traditional-gold text-warm-green p-2 rounded-full">
-                          <Eye size={16} />
-                        </div>
-                      </div>
+                {/* Overlay */}
+                <div className="gallery-overlay">
+                  <div className="gallery-overlay-content">
+                    <h3 className="gallery-overlay-title">{image.title}</h3>
+                    <div className="gallery-overlay-category">
+                      {image.category}
                     </div>
                   </div>
                 </div>
@@ -365,18 +352,18 @@ export default function GallerySection() {
 
         {/* Show More/Less Button */}
         {filteredImages.length > 15 && (
-          <motion.div variants={itemVariants} className="text-center mt-8">
+          <div className="gallery-controls">
             <motion.button
               onClick={() => setShowAllImages(!showAllImages)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-traditional-gold text-warm-green px-8 py-3 rounded-full font-semibold hover:bg-traditional-gold-light transition-colors duration-300 shadow-lg"
+              className="gallery-btn"
             >
               {showAllImages
                 ? `Show Less Images`
                 : `Show All ${filteredImages.length} Images`}
             </motion.button>
-          </motion.div>
+          </div>
         )}
 
         {/* Lightbox */}
