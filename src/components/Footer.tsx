@@ -41,13 +41,13 @@ export default function Footer() {
   return (
     <footer className="bg-warm-green text-warm-white mehndi-pattern-bg">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {/* Brand Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="space-y-4"
+            className="space-y-4 lg:col-span-1"
           >
             <div className="flex items-center space-x-3">
               <Image
@@ -108,7 +108,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <button
                     onClick={() => handleNavClick(link.href)}
-                    className="text-sm text-warm-white/80 hover:text-traditional-gold transition-colors duration-300 hover:translate-x-1 transform"
+                    className="text-sm text-warm-white/80 hover:text-traditional-gold transition-all duration-300 hover:translate-x-1 transform text-left w-full"
                   >
                     {link.name}
                   </button>
@@ -193,8 +193,8 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 pt-8 border-t border-warm-green-light"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-center md:text-left">
+          <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+            <div className="text-center lg:text-left">
               <p className="text-sm text-warm-white/80">
                 © 2024 Krishna Mehandi Artist. All rights reserved.
               </p>
@@ -203,10 +203,12 @@ export default function Footer() {
               </p>
             </div>
 
-            <div className="flex items-center space-x-2 text-sm text-warm-white/80">
-              <span>Designed & Developed with</span>
-              <Heart size={14} className="text-accent-maroon fill-current" />
-              <span>by</span>
+            <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 text-sm text-warm-white/80 text-center">
+              <div className="flex items-center space-x-2">
+                <span>Designed & Developed with</span>
+                <Heart size={14} className="text-accent-maroon fill-current" />
+                <span>by</span>
+              </div>
               <motion.a
                 href="https://kush-personal-portfolio-my-portfolio.vercel.app/"
                 target="_blank"

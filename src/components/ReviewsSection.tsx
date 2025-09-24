@@ -8,11 +8,23 @@ import {
   Quote,
   Star,
 } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function ReviewsSection() {
   const [currentReview, setCurrentReview] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showAllReviews, setShowAllReviews] = useState(false);
+
+  // Function to get user initials
+  const getInitials = (name: string) => {
+    return name
+      .split(" ")
+      .map((word) => word.charAt(0))
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
+  };
 
   const reviews = [
     {
@@ -154,25 +166,34 @@ export default function ReviewsSection() {
                   transition={{ duration: 0.5 }}
                   className="p-8 md:p-12"
                 >
-                  <div className="flex flex-col md:flex-row items-center gap-8">
-                    {/* Client Photo */}
+                  <div className="flex flex-col lg:flex-row items-center gap-6">
+                    {/* User Initials */}
                     <div className="relative flex-shrink-0">
-                      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-traditional-gold shadow-lg">
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-traditional-gold flex items-center justify-center border-4 border-traditional-gold shadow-lg">
+                        <span className="text-warm-green font-bold text-lg md:text-xl">
+                          {getInitials(reviews[currentReview].name)}
+                        </span>
+                      </div>
+                      <div className="absolute -top-2 -right-2 bg-warm-green text-white rounded-full p-1.5">
+                        <Quote size={12} />
+                      </div>
+                    </div>
+
+                    {/* Mehandi Image */}
+                    <div className="flex-shrink-0">
+                      <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-traditional-gold shadow-lg">
                         <Image
-                          src={reviews[currentReview].image}
-                          alt={reviews[currentReview].name}
-                          width={128}
-                          height={128}
+                          src={reviews[currentReview].mehandiImage}
+                          alt={`Mehandi work by Krishna for ${reviews[currentReview].name}`}
+                          width={160}
+                          height={160}
                           className="w-full h-full object-cover"
                         />
-                      </div>
-                      <div className="absolute -top-2 -right-2 bg-traditional-gold text-warm-green rounded-full p-2">
-                        <Quote size={16} />
                       </div>
                     </div>
 
                     {/* Review Content */}
-                    <div className="flex-1 text-center md:text-left">
+                    <div className="flex-1 text-center lg:text-left">
                       {/* Stars */}
                       <div className="flex justify-center md:justify-start mb-4">
                         {[...Array(reviews[currentReview].rating)].map(
@@ -247,47 +268,76 @@ export default function ReviewsSection() {
             </div>
           </motion.div>
 
-          {/* Review Grid */}
+          {/* Compact Review Grid */}
           <motion.div variants={itemVariants}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {reviews.slice(0, 6).map((review) => (
-                <motion.div
-                  key={review.id}
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  className="bg-warm-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-traditional-gold/10"
-                >
-                  <div className="flex items-center space-x-3 mb-4">
-                    <Image
-                      src={review.image}
-                      alt={review.name}
-                      width={48}
-                      height={48}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
-                    <div>
-                      <h4 className="font-semibold text-warm-green">
-                        {review.name}
-                      </h4>
-                      <div className="flex">
-                        {[...Array(review.rating)].map((_, i) => (
-                          <Star
-                            key={i}
-                            size={14}
-                            className="text-traditional-gold fill-current"
-                          />
-                        ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+              {reviews
+                .slice(0, showAllReviews ? reviews.length : 6)
+                .map((review) => (
+                  <motion.div
+                    key={review.id}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    className="bg-warm-white rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-300 border border-traditional-gold/10"
+                  >
+                    <div className="flex items-start space-x-3 mb-3">
+                      {/* User Initials */}
+                      <div className="w-10 h-10 rounded-full bg-traditional-gold flex items-center justify-center flex-shrink-0">
+                        <span className="text-warm-green font-semibold text-sm">
+                          {getInitials(review.name)}
+                        </span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-warm-green text-sm truncate">
+                          {review.name}
+                        </h4>
+                        <div className="flex mb-1">
+                          {[...Array(review.rating)].map((_, i) => (
+                            <Star
+                              key={i}
+                              size={12}
+                              className="text-traditional-gold fill-current"
+                            />
+                          ))}
+                        </div>
+                        <div className="text-xs text-warm-green/60 mb-2">
+                          {review.occasion} • {review.location}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <p className="text-warm-green/80 text-sm mb-3 line-clamp-3">
-                    {review.review}
-                  </p>
-                  <div className="text-xs text-warm-green/60">
-                    {review.occasion} • {review.location}
-                  </div>
-                </motion.div>
-              ))}
+
+                    {/* Mehandi Image */}
+                    <div className="w-full h-32 rounded-lg overflow-hidden mb-3">
+                      <Image
+                        src={review.mehandiImage}
+                        alt={`Mehandi work for ${review.name}`}
+                        width={300}
+                        height={128}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <p className="text-warm-green/80 text-xs leading-relaxed line-clamp-2">
+                      {review.review}
+                    </p>
+                  </motion.div>
+                ))}
             </div>
+
+            {/* Show More/Less Button */}
+            {reviews.length > 6 && (
+              <div className="text-center">
+                <motion.button
+                  onClick={() => setShowAllReviews(!showAllReviews)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-traditional-gold text-warm-green px-6 py-2 rounded-full font-semibold hover:bg-traditional-gold-light transition-colors duration-300 shadow-md"
+                >
+                  {showAllReviews
+                    ? "Show Less Reviews"
+                    : `Show All ${reviews.length} Reviews`}
+                </motion.button>
+              </div>
+            )}
           </motion.div>
 
           {/* WedMeGood CTA */}

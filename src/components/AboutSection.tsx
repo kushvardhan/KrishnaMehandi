@@ -65,16 +65,20 @@ export default function AboutSection() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16">
             {/* Owner Image */}
-            <motion.div variants={itemVariants} className="relative">
-              <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+            <motion.div
+              variants={itemVariants}
+              className="relative order-2 lg:order-1"
+            >
+              <div className="relative overflow-hidden rounded-3xl shadow-2xl max-w-md mx-auto lg:max-w-none">
                 <Image
                   src="/ownerImage/KrishnaMehandi-Owner.jpeg"
                   alt="Dushyant Singh - Krishna Mehandi Artist Owner"
                   width={500}
                   height={600}
                   className="w-full h-auto object-cover"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-warm-green/20 to-transparent"></div>
               </div>
@@ -84,14 +88,17 @@ export default function AboutSection() {
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-                className="absolute -bottom-6 -right-6 bg-traditional-gold text-warm-green p-4 rounded-full shadow-xl"
+                className="absolute -bottom-4 -right-4 lg:-bottom-6 lg:-right-6 bg-traditional-gold text-warm-green p-3 lg:p-4 rounded-full shadow-xl"
               >
-                <Award size={32} />
+                <Award size={24} className="lg:w-8 lg:h-8" />
               </motion.div>
             </motion.div>
 
             {/* Content */}
-            <motion.div variants={itemVariants} className="space-y-6">
+            <motion.div
+              variants={itemVariants}
+              className="space-y-6 order-1 lg:order-2"
+            >
               <div>
                 <h3 className="text-3xl font-heading font-bold text-warm-green mb-2">
                   Meet Dushyant Singh
@@ -153,15 +160,17 @@ export default function AboutSection() {
             <h3 className="text-3xl font-heading font-bold text-warm-green text-center mb-8">
               Our Signature Services
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
               {services.map((service, index) => (
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-warm-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-traditional-gold/10 hover:border-traditional-gold/30"
+                  className="bg-warm-white rounded-xl p-4 md:p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-traditional-gold/10 hover:border-traditional-gold/30"
                 >
-                  <div className="text-3xl mb-3">{service.icon}</div>
-                  <h4 className="font-medium text-warm-green text-sm">
+                  <div className="text-2xl md:text-3xl mb-2 md:mb-3">
+                    {service.icon}
+                  </div>
+                  <h4 className="font-medium text-warm-green text-xs md:text-sm leading-tight">
                     {service.name}
                   </h4>
                 </motion.div>
@@ -171,20 +180,23 @@ export default function AboutSection() {
 
           {/* Stats */}
           <motion.div variants={itemVariants}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.05 }}
-                  className="text-center bg-warm-green text-warm-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="text-center bg-warm-green text-warm-white rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="bg-traditional-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <stat.icon size={32} className="text-traditional-gold" />
+                  <div className="bg-traditional-gold/20 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+                    <stat.icon
+                      size={24}
+                      className="text-traditional-gold md:w-8 md:h-8"
+                    />
                   </div>
-                  <div className="text-3xl font-heading font-bold mb-2">
+                  <div className="text-2xl md:text-3xl font-heading font-bold mb-1 md:mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-sm font-medium opacity-90">
+                  <div className="text-xs md:text-sm font-medium opacity-90 leading-tight">
                     {stat.label}
                   </div>
                 </motion.div>

@@ -8,71 +8,209 @@ import { useState } from "react";
 export default function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [filter, setFilter] = useState("all");
+  const [showAllImages, setShowAllImages] = useState(false);
 
-  // Placeholder images - these will be replaced with actual gallery images
+  // Actual mehandi gallery images
   const galleryImages = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=500&h=600&fit=crop",
-      alt: "Bridal Mehndi Design",
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.01.jpeg",
+      alt: "Bridal Hand Mehndi Design",
       category: "bridal",
-      title: "Intricate Bridal Design",
+      title: "Intricate Bridal Hand Design",
+      type: "hand",
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=600&fit=crop",
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.02.jpeg",
       alt: "Arabic Mehndi Pattern",
       category: "arabic",
       title: "Arabic Floral Pattern",
+      type: "hand",
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1583391733981-24c4ec8c3d8b?w=500&h=600&fit=crop",
-      alt: "Traditional Rajasthani Design",
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.05.jpeg",
+      alt: "Traditional Hand Design",
       category: "traditional",
-      title: "Rajasthani Mandala",
+      title: "Traditional Mandala",
+      type: "hand",
     },
     {
       id: 4,
-      src: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=500&h=600&fit=crop",
-      alt: "Modern Mehndi Art",
-      category: "modern",
-      title: "Contemporary Design",
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.06.jpeg",
+      alt: "Party Mehndi Design",
+      category: "party",
+      title: "Quick Party Design",
+      type: "hand",
     },
     {
       id: 5,
-      src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=600&fit=crop",
-      alt: "Party Mehndi Design",
-      category: "party",
-      title: "Festival Special",
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.12.jpeg",
+      alt: "Foot Mehndi Design",
+      category: "bridal",
+      title: "Bridal Foot Design",
+      type: "foot",
     },
     {
       id: 6,
-      src: "https://images.unsplash.com/photo-1583391733981-24c4ec8c3d8b?w=500&h=600&fit=crop",
-      alt: "Bridal Hand Art",
-      category: "bridal",
-      title: "Bridal Elegance",
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.14.jpeg",
+      alt: "Modern Hand Design",
+      category: "modern",
+      title: "Contemporary Art",
+      type: "hand",
     },
     {
       id: 7,
-      src: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=500&h=600&fit=crop",
-      alt: "Arabic Style Mehndi",
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.15.jpeg",
+      alt: "Arabic Foot Design",
       category: "arabic",
-      title: "Arabic Geometric",
+      title: "Arabic Foot Pattern",
+      type: "foot",
     },
     {
       id: 8,
-      src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=600&fit=crop",
-      alt: "Traditional Pattern",
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.16.jpeg",
+      alt: "Traditional Foot Pattern",
       category: "traditional",
-      title: "Heritage Design",
+      title: "Heritage Foot Design",
+      type: "foot",
     },
     {
       id: 9,
-      src: "https://images.unsplash.com/photo-1583391733981-24c4ec8c3d8b?w=500&h=600&fit=crop",
-      alt: "Modern Minimalist",
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.18.jpeg",
+      alt: "Bridal Hand Design",
+      category: "bridal",
+      title: "Elegant Bridal Pattern",
+      type: "hand",
+    },
+    {
+      id: 10,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.19.jpeg",
+      alt: "Party Hand Design",
+      category: "party",
+      title: "Quick Party Pattern",
+      type: "hand",
+    },
+    {
+      id: 11,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.20.jpeg",
+      alt: "Modern Foot Design",
       category: "modern",
-      title: "Minimalist Art",
+      title: "Contemporary Foot Art",
+      type: "foot",
+    },
+    {
+      id: 12,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.31.jpeg",
+      alt: "Arabic Hand Pattern",
+      category: "arabic",
+      title: "Bold Arabic Design",
+      type: "hand",
+    },
+    {
+      id: 13,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.34.jpeg",
+      alt: "Traditional Hand Design",
+      category: "traditional",
+      title: "Classic Traditional Pattern",
+      type: "hand",
+    },
+    {
+      id: 14,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.35.jpeg",
+      alt: "Bridal Foot Design",
+      category: "bridal",
+      title: "Delicate Bridal Foot Art",
+      type: "foot",
+    },
+    {
+      id: 15,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.36.jpeg",
+      alt: "Party Foot Design",
+      category: "party",
+      title: "Festive Foot Pattern",
+      type: "foot",
+    },
+    {
+      id: 16,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.37.jpeg",
+      alt: "Modern Hand Art",
+      category: "modern",
+      title: "Minimalist Hand Design",
+      type: "hand",
+    },
+    {
+      id: 17,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.40.jpeg",
+      alt: "Arabic Foot Pattern",
+      category: "arabic",
+      title: "Elegant Arabic Foot Design",
+      type: "foot",
+    },
+    {
+      id: 18,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.41.jpeg",
+      alt: "Traditional Foot Art",
+      category: "traditional",
+      title: "Heritage Foot Pattern",
+      type: "foot",
+    },
+    {
+      id: 19,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.12 (1).jpeg",
+      alt: "Bridal Hand Design",
+      category: "bridal",
+      title: "Ornate Bridal Hand Art",
+      type: "hand",
+    },
+    {
+      id: 20,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.14 (1).jpeg",
+      alt: "Party Hand Pattern",
+      category: "party",
+      title: "Festive Hand Design",
+      type: "hand",
+    },
+    {
+      id: 21,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.16 (1).jpeg",
+      alt: "Modern Foot Design",
+      category: "modern",
+      title: "Contemporary Foot Pattern",
+      type: "foot",
+    },
+    {
+      id: 22,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.18 (1).jpeg",
+      alt: "Arabic Hand Design",
+      category: "arabic",
+      title: "Intricate Arabic Hand Art",
+      type: "hand",
+    },
+    {
+      id: 23,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.20 (1).jpeg",
+      alt: "Traditional Hand Pattern",
+      category: "traditional",
+      title: "Classic Hand Design",
+      type: "hand",
+    },
+    {
+      id: 24,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.35 (1).jpeg",
+      alt: "Bridal Foot Art",
+      category: "bridal",
+      title: "Exquisite Bridal Foot Design",
+      type: "foot",
+    },
+    {
+      id: 25,
+      src: "/mehandi/WhatsApp Image 2025-09-23 at 21.28.41 (1).jpeg",
+      alt: "Party Foot Pattern",
+      category: "party",
+      title: "Celebration Foot Design",
+      type: "foot",
     },
   ];
 
@@ -83,12 +221,20 @@ export default function GallerySection() {
     { id: "traditional", name: "Traditional" },
     { id: "modern", name: "Modern" },
     { id: "party", name: "Party" },
+    { id: "hand", name: "Hand Designs" },
+    { id: "foot", name: "Foot Designs" },
   ];
 
   const filteredImages =
     filter === "all"
       ? galleryImages
+      : filter === "hand" || filter === "foot"
+      ? galleryImages.filter((img) => img.type === filter)
       : galleryImages.filter((img) => img.category === filter);
+
+  // Responsive display logic - show 15 images initially, all on desktop when expanded
+  const displayLimit = showAllImages ? filteredImages.length : 15;
+  const displayedImages = filteredImages.slice(0, displayLimit);
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
@@ -100,14 +246,14 @@ export default function GallerySection() {
 
   const nextImage = () => {
     if (selectedImage !== null) {
-      setSelectedImage((selectedImage + 1) % filteredImages.length);
+      setSelectedImage((selectedImage + 1) % displayedImages.length);
     }
   };
 
   const prevImage = () => {
     if (selectedImage !== null) {
       setSelectedImage(
-        selectedImage === 0 ? filteredImages.length - 1 : selectedImage - 1
+        selectedImage === 0 ? displayedImages.length - 1 : selectedImage - 1
       );
     }
   };
@@ -176,10 +322,10 @@ export default function GallerySection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6"
         >
           <AnimatePresence>
-            {filteredImages.map((image, index) => (
+            {displayedImages.map((image, index) => (
               <motion.div
                 key={image.id}
                 variants={itemVariants}
@@ -217,6 +363,22 @@ export default function GallerySection() {
           </AnimatePresence>
         </motion.div>
 
+        {/* Show More/Less Button */}
+        {filteredImages.length > 15 && (
+          <motion.div variants={itemVariants} className="text-center mt-8">
+            <motion.button
+              onClick={() => setShowAllImages(!showAllImages)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-traditional-gold text-warm-green px-8 py-3 rounded-full font-semibold hover:bg-traditional-gold-light transition-colors duration-300 shadow-lg"
+            >
+              {showAllImages
+                ? `Show Less Images`
+                : `Show All ${filteredImages.length} Images`}
+            </motion.button>
+          </motion.div>
+        )}
+
         {/* Lightbox */}
         <AnimatePresence>
           {selectedImage !== null && (
@@ -235,8 +397,8 @@ export default function GallerySection() {
                 onClick={(e) => e.stopPropagation()}
               >
                 <Image
-                  src={filteredImages[selectedImage].src}
-                  alt={filteredImages[selectedImage].alt}
+                  src={displayedImages[selectedImage].src}
+                  alt={displayedImages[selectedImage].alt}
                   width={800}
                   height={1000}
                   className="max-w-full max-h-[90vh] object-contain rounded-lg"
@@ -267,33 +429,17 @@ export default function GallerySection() {
                 {/* Image Info */}
                 <div className="absolute bottom-4 left-4 right-4 bg-warm-green/90 text-white p-4 rounded-lg">
                   <h3 className="font-heading font-semibold text-lg mb-1">
-                    {filteredImages[selectedImage].title}
+                    {displayedImages[selectedImage].title}
                   </h3>
                   <p className="text-traditional-gold text-sm capitalize">
-                    {filteredImages[selectedImage].category} Design
+                    {displayedImages[selectedImage].category} •{" "}
+                    {displayedImages[selectedImage].type} Design
                   </p>
                 </div>
               </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Note for Admin */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <div className="bg-traditional-gold/10 border border-traditional-gold/30 rounded-2xl p-6 max-w-2xl mx-auto">
-            <p className="text-warm-green/80 text-sm">
-              <strong>Note:</strong> This gallery currently shows placeholder
-              images. You can easily update these with your actual mehndi work
-              photos through the admin panel.
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
