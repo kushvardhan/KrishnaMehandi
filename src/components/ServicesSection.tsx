@@ -1,7 +1,7 @@
 "use client";
 
 import { easeInOut, motion, Variants } from "framer-motion";
-import { Clock, Crown, Palette, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Clock, Crown, Palette, Sparkles, Star } from "lucide-react";
 
 export default function ServicesSection() {
   const services = [
