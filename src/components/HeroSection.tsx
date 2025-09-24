@@ -29,6 +29,16 @@ export default function HeroSection() {
     <section id="home" className="hero-section">
       {/* Background with Mehndi Pattern */}
       <div className="hero-background">
+        {/* Background Image */}
+        <div className="hero-background-image">
+          <Image
+            src="/mehandi/WhatsApp Image 2025-09-23 at 21.28.01.jpeg"
+            alt="Beautiful Mehandi Design Background"
+            fill
+            className="object-cover opacity-10"
+            priority
+          />
+        </div>
         <div className="hero-pattern-overlay"></div>
 
         {/* Decorative Elements */}
