@@ -42,11 +42,8 @@ export default function AboutSection() {
   };
 
   return (
-    <section
-      id="about"
-      className="py-20 bg-gradient-to-b from-warm-white to-cream"
-    >
-      <div className="container mx-auto px-4">
+    <section id="about" className="about-section">
+      <div className="about-container">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -54,33 +51,31 @@ export default function AboutSection() {
           viewport={{ once: true, amount: 0.3 }}
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-warm-green mb-4">
-              About Krishna Mehandi Artist
-            </h2>
-            <div className="w-24 h-1 bg-traditional-gold mx-auto mb-6"></div>
-            <p className="text-lg text-warm-green/80 max-w-2xl mx-auto">
+          <motion.div variants={itemVariants} className="about-header">
+            <h2 className="about-title">About Krishna Mehandi Artist</h2>
+            <div className="about-divider"></div>
+            <p className="about-subtitle">
               Bringing traditional artistry and modern elegance to every
               celebration
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16">
+          <div className="about-content-grid">
             {/* Owner Image */}
             <motion.div
               variants={itemVariants}
-              className="relative order-2 lg:order-1"
+              className="about-image-container"
             >
-              <div className="relative overflow-hidden rounded-3xl shadow-2xl max-w-md mx-auto lg:max-w-none">
+              <div className="about-image-wrapper">
                 <Image
                   src="/ownerImage/KrishnaMehandi-Owner.jpeg"
                   alt="Dushyant Singh - Krishna Mehandi Artist Owner"
                   width={500}
                   height={600}
-                  className="w-full h-auto object-cover"
+                  className="about-image"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-warm-green/20 to-transparent"></div>
+                <div className="about-image-overlay"></div>
               </div>
 
               {/* Floating Badge */}
@@ -88,27 +83,22 @@ export default function AboutSection() {
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-                className="absolute -bottom-4 -right-4 lg:-bottom-6 lg:-right-6 bg-traditional-gold text-warm-green p-3 lg:p-4 rounded-full shadow-xl"
+                className="about-badge"
               >
-                <Award size={24} className="lg:w-8 lg:h-8" />
+                <Award size={24} />
               </motion.div>
             </motion.div>
 
             {/* Content */}
-            <motion.div
-              variants={itemVariants}
-              className="space-y-6 order-1 lg:order-2"
-            >
+            <motion.div variants={itemVariants} className="about-content">
               <div>
-                <h3 className="text-3xl font-heading font-bold text-warm-green mb-2">
-                  Meet Dushyant Singh
-                </h3>
-                <p className="text-xl font-elegant text-traditional-gold mb-4">
+                <h3 className="about-owner-title">Meet Dushyant Singh</h3>
+                <p className="about-owner-subtitle">
                   Master Mehandi Artist & Creative Director
                 </p>
               </div>
 
-              <div className="space-y-4 text-warm-green/80 leading-relaxed">
+              <div className="about-description">
                 <p>
                   With over a decade of experience in the art of Mehandi,
                   Dushyant Singh has established Krishna Mehandi Artist as one
@@ -134,17 +124,17 @@ export default function AboutSection() {
               {/* Location */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="bg-warm-white rounded-2xl p-6 shadow-lg border border-traditional-gold/20"
+                className="about-location-card"
               >
-                <div className="flex items-start space-x-4">
-                  <div className="bg-traditional-gold/20 p-3 rounded-full">
-                    <MapPin className="text-traditional-gold" size={24} />
+                <div className="about-location-content">
+                  <div className="about-location-icon">
+                    <MapPin size={24} />
                   </div>
                   <div>
-                    <h4 className="font-heading font-semibold text-warm-green mb-2">
+                    <h4 className="about-location-title">
                       Our Studio Location
                     </h4>
-                    <p className="text-warm-green/80">
+                    <p className="about-location-text">
                       Amrapali Zodiac Market, Sector-120
                       <br />
                       Near Apollo Medical, Noida, UP - 201301
@@ -156,23 +146,20 @@ export default function AboutSection() {
           </div>
 
           {/* Services Grid */}
-          <motion.div variants={itemVariants} className="mb-16">
-            <h3 className="text-3xl font-heading font-bold text-warm-green text-center mb-8">
-              Our Signature Services
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+          <motion.div
+            variants={itemVariants}
+            className="about-services-section"
+          >
+            <h3 className="about-services-title">Our Signature Services</h3>
+            <div className="about-services-grid">
               {services.map((service, index) => (
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-warm-white rounded-xl p-4 md:p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-traditional-gold/10 hover:border-traditional-gold/30"
+                  className="about-service-card"
                 >
-                  <div className="text-2xl md:text-3xl mb-2 md:mb-3">
-                    {service.icon}
-                  </div>
-                  <h4 className="font-medium text-warm-green text-xs md:text-sm leading-tight">
-                    {service.name}
-                  </h4>
+                  <div className="about-service-icon">{service.icon}</div>
+                  <h4 className="about-service-name">{service.name}</h4>
                 </motion.div>
               ))}
             </div>
@@ -180,25 +167,18 @@ export default function AboutSection() {
 
           {/* Stats */}
           <motion.div variants={itemVariants}>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <div className="about-stats-grid">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.05 }}
-                  className="text-center bg-warm-green text-warm-white rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="about-stat-card"
                 >
-                  <div className="bg-traditional-gold/20 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
-                    <stat.icon
-                      size={24}
-                      className="text-traditional-gold md:w-8 md:h-8"
-                    />
+                  <div className="about-stat-icon-wrapper">
+                    <stat.icon size={24} />
                   </div>
-                  <div className="text-2xl md:text-3xl font-heading font-bold mb-1 md:mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-xs md:text-sm font-medium opacity-90 leading-tight">
-                    {stat.label}
-                  </div>
+                  <div className="about-stat-number">{stat.number}</div>
+                  <div className="about-stat-label">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
