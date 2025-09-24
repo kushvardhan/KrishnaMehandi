@@ -32,7 +32,7 @@ export default function HeroSection() {
         {/* Background Image */}
         <div className="hero-background-image">
           <Image
-            src="/mehandi/WhatsApp Image 2025-09-23 at 21.28.01.jpeg"
+            src="/mehandi/WhatsApp Image 2025-09-23 at 21.28.18.jpeg" 
             alt="Beautiful Mehandi Design Background"
             fill
             className="object-cover opacity-10"
