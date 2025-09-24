@@ -13,14 +13,7 @@ const nextConfig: NextConfig = {
   // Image optimization
   images: {
     formats: ["image/webp", "image/avif"],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-        port: "",
-        pathname: "/**",
-      },
-    ],
+    // All images are now local - no external domains needed
   },
 
   // Compression
