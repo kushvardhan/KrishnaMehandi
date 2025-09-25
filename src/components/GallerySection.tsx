@@ -7,6 +7,7 @@ import { useState } from "react";
 
 export default function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [showAllImages, setShowAllImages] = useState(false);
 
   // Actual mehandi gallery images
@@ -314,21 +315,7 @@ export default function GallerySection() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Show More/Less Button */}
-        {galleryImages.length > 15 && (
-          <div className="gallery-controls">
-            <motion.button
-              onClick={() => setShowAllImages(!showAllImages)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="gallery-btn"
-            >
-              {showAllImages
-                ? `Show Less Images`
-                : `Show All ${galleryImages.length} Images`}
-            </motion.button>
-          </div>
-        )}
+      
 
         {/* Lightbox */}
          <AnimatePresence>
