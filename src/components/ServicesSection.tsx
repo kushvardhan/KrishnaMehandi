@@ -167,7 +167,6 @@ export default function ServicesSection() {
 
                   <div className="service-pricing">
                     <div className="service-price">Contact for pricing</div>
-                    <div className="service-price-note">Starting from</div>
                   </div>
 
                   <motion.button
