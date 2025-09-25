@@ -122,7 +122,7 @@ export default function ServicesSection() {
       <div className="services-container">
         <motion.div
           variants={containerVariants}
-          initial="hidden"
+          initial="visible"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
