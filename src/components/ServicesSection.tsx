@@ -145,13 +145,6 @@ export default function ServicesSection() {
                 whileHover={{ y: -10, scale: 1.02 }}
                 className={`service-card ${service.popular ? "popular" : ""}`}
               >
-                {/* Popular Badge */}
-                {service.popular && (
-                  <div className="service-popular-badge">
-                    <Star size={14} fill="currentColor" />
-                    <span>Most Popular</span>
-                  </div>
-                )}
                 {/* Header with Gradient */}
                 <div
                   className={`service-header bg-gradient-to-r ${service.gradient}`}
@@ -173,7 +166,7 @@ export default function ServicesSection() {
                   </div>
 
                   <div className="service-pricing">
-                    <div className="service-price">{service.price}</div>
+                    <div className="service-price">Contact for pricing</div>
                     <div className="service-price-note">Starting from</div>
                   </div>
 
@@ -190,70 +183,57 @@ export default function ServicesSection() {
             ))}
           </div>
 
-          {/* Specialties */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-3xl font-heading font-bold text-warm-green text-center mb-12">
-              Our Specialties
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {specialties.map((specialty, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-warm-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-traditional-gold/10 hover:border-traditional-gold/30 group"
-                >
-                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {specialty.icon}
-                  </div>
-                  <h4 className="text-xl font-heading font-semibold text-warm-green mb-2">
-                    {specialty.name}
-                  </h4>
-                  <p className="text-warm-green/70 text-sm">
-                    {specialty.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* CTA Section */}
+ <motion.div variants={itemVariants}>
+      <h3 className="specialties-heading">Our Specialties</h3>
+      <div className="specialties-grid">
+        {specialties.map((specialty, index) => (
           <motion.div
-            variants={itemVariants}
-            className="mt-16 text-center bg-warm-green rounded-3xl p-12 text-warm-white relative overflow-hidden"
+            key={index}
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="specialty-card"
           >
-            <div className="absolute inset-0 mehndi-pattern-bg opacity-20"></div>
-            <div className="relative z-10">
-              <Clock size={48} className="mx-auto mb-6 text-traditional-gold" />
-              <h3 className="text-3xl font-heading font-bold mb-4">
-                Ready to Book Your Session?
-              </h3>
-              <p className="text-warm-white/90 mb-8 max-w-2xl mx-auto">
-                Contact us today to schedule your mehndi appointment. We&apos;re
-                available for home visits and studio sessions across Noida and
-                nearby areas.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.a
-                  href="https://wa.me/919873382317"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-traditional-gold text-warm-green px-8 py-4 rounded-full font-semibold hover:bg-traditional-gold-light transition-colors duration-300"
-                >
-                  WhatsApp Booking
-                </motion.a>
-                <motion.a
-                  href="tel:+919873382317"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-transparent border-2 border-traditional-gold text-traditional-gold px-8 py-4 rounded-full font-semibold hover:bg-traditional-gold hover:text-warm-green transition-all duration-300"
-                >
-                  Call Now
-                </motion.a>
-              </div>
-            </div>
+            <div className="specialty-icon">{specialty.icon}</div>
+            <h4 className="specialty-name">{specialty.name}</h4>
+            <p className="specialty-desc">{specialty.description}</p>
           </motion.div>
+        ))}
+      </div>
+
+      {/* CTA Section */}
+      <motion.div variants={itemVariants} className="cta-section">
+        <div className="cta-bg-pattern"></div>
+        <div className="cta-content">
+          <Clock size={48} className="cta-icon" />
+          <h3 className="cta-heading">Ready to Book Your Session?</h3>
+          <p className="cta-text">
+            Contact us today to schedule your mehndi appointment. We&apos;re
+            available for home visits and studio sessions across Noida and
+            nearby areas.
+          </p>
+          <div className="cta-buttons">
+            <motion.a
+              href="https://wa.me/919873382317"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="cta-btn-primary"
+            >
+              WhatsApp Booking
+            </motion.a>
+            <motion.a
+              href="tel:+919873382317"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="cta-btn-secondary"
+            >
+              Call Now
+            </motion.a>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+          
         </motion.div>
       </div>
     </section>

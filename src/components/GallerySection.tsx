@@ -7,7 +7,6 @@ import { useState } from "react";
 
 export default function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [filter, setFilter] = useState("all");
   const [showAllImages, setShowAllImages] = useState(false);
 
   // Actual mehandi gallery images
@@ -214,27 +213,9 @@ export default function GallerySection() {
     },
   ];
 
-  const categories = [
-    { id: "all", name: "All Designs" },
-    { id: "bridal", name: "Bridal" },
-    { id: "arabic", name: "Arabic" },
-    { id: "traditional", name: "Traditional" },
-    { id: "modern", name: "Modern" },
-    { id: "party", name: "Party" },
-    { id: "hand", name: "Hand Designs" },
-    { id: "foot", name: "Foot Designs" },
-  ];
-
-  const filteredImages =
-    filter === "all"
-      ? galleryImages
-      : filter === "hand" || filter === "foot"
-      ? galleryImages.filter((img) => img.type === filter)
-      : galleryImages.filter((img) => img.category === filter);
-
   // Responsive display logic - show 15 images initially, all on desktop when expanded
-  const displayLimit = showAllImages ? filteredImages.length : 15;
-  const displayedImages = filteredImages.slice(0, displayLimit);
+  const displayLimit = showAllImages ? galleryImages.length : 15;
+  const displayedImages = galleryImages.slice(0, displayLimit);
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
@@ -293,23 +274,6 @@ export default function GallerySection() {
           <p className="gallery-subtitle">
             Explore our stunning collection of mehndi designs and artistry
           </p>
-
-          {/* Filter Buttons */}
-          <div className="gallery-categories">
-            {categories.map((category) => (
-              <motion.button
-                key={category.id}
-                onClick={() => setFilter(category.id)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`gallery-category-btn ${
-                  filter === category.id ? "active" : ""
-                }`}
-              >
-                {category.name}
-              </motion.button>
-            ))}
-          </div>
         </motion.div>
 
         {/* Gallery Grid */}
@@ -351,7 +315,7 @@ export default function GallerySection() {
         </motion.div>
 
         {/* Show More/Less Button */}
-        {filteredImages.length > 15 && (
+        {galleryImages.length > 15 && (
           <div className="gallery-controls">
             <motion.button
               onClick={() => setShowAllImages(!showAllImages)}
@@ -361,72 +325,61 @@ export default function GallerySection() {
             >
               {showAllImages
                 ? `Show Less Images`
-                : `Show All ${filteredImages.length} Images`}
+                : `Show All ${galleryImages.length} Images`}
             </motion.button>
           </div>
         )}
 
         {/* Lightbox */}
-        <AnimatePresence>
-          {selectedImage !== null && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-              onClick={closeLightbox}
-            >
-              <motion.div
-                initial={{ scale: 0.8 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0.8 }}
-                className="relative max-w-4xl max-h-full"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Image
-                  src={displayedImages[selectedImage].src}
-                  alt={displayedImages[selectedImage].alt}
-                  width={800}
-                  height={1000}
-                  className="max-w-full max-h-[90vh] object-contain rounded-lg"
-                />
+         <AnimatePresence>
+      {selectedImage !== null && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="lightbox-backdrop"
+          onClick={closeLightbox}
+        >
+          <motion.div
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.8 }}
+            className="lightbox-container"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={displayedImages[selectedImage].src}
+              alt={displayedImages[selectedImage].alt}
+              width={800}
+              height={1000}
+              className="lightbox-image"
+            />
 
-                {/* Close Button */}
-                <button
-                  onClick={closeLightbox}
-                  className="absolute top-4 right-4 bg-warm-green/80 text-white p-2 rounded-full hover:bg-warm-green transition-colors duration-300"
-                >
-                  <X size={24} />
-                </button>
+            {/* Close Button */}
+            <button onClick={closeLightbox} className="lightbox-close">
+              <X size={24} />
+            </button>
 
-                {/* Navigation Buttons */}
-                <button
-                  onClick={prevImage}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-warm-green/80 text-white p-3 rounded-full hover:bg-warm-green transition-colors duration-300"
-                >
-                  <ChevronLeft size={24} />
-                </button>
-                <button
-                  onClick={nextImage}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-warm-green/80 text-white p-3 rounded-full hover:bg-warm-green transition-colors duration-300"
-                >
-                  <ChevronRight size={24} />
-                </button>
+            {/* Navigation */}
+            <button onClick={prevImage} className="lightbox-prev">
+              <ChevronLeft size={24} />
+            </button>
+            <button onClick={nextImage} className="lightbox-next">
+              <ChevronRight size={24} />
+            </button>
 
-                {/* Image Info */}
-                <div className="absolute bottom-4 left-4 right-4 bg-warm-green/90 text-white p-4 rounded-lg">
-                  <h3 className="font-heading font-semibold text-lg mb-1">
-                    {displayedImages[selectedImage].title}
-                  </h3>
-                  <p className="text-traditional-gold text-sm capitalize">
-                    {displayedImages[selectedImage].category} •{" "}
-                    {displayedImages[selectedImage].type} Design
-                  </p>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            {/* Info */}
+            <div className="lightbox-info">
+              <h3>{displayedImages[selectedImage].title}</h3>
+              <p>
+                {displayedImages[selectedImage].category} •{" "}
+                {displayedImages[selectedImage].type} Design
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
       </div>
     </section>
   );
