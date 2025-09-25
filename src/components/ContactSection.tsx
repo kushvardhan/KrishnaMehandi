@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import { easeInOut, motion, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import {
   Clock,
   ExternalLink,
@@ -49,246 +50,145 @@ export default function ContactSection() {
     { day: "Festivals & Events", time: "Extended Hours Available" },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.2,
-      },
-    },
-  };
+  // const containerVariants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 0.8,
+  //       staggerChildren: 0.2,
+  //     },
+  //   },
+  // };
 
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: easeInOut },
-    },
-  };
+  // const itemVariants: Variants = {
+  //   hidden: { opacity: 0, y: 30 },
+  //   visible: {
+  //     opacity: 1,
+  //     y: 0,
+  //     transition: { duration: 0.6, ease: easeInOut },
+  //   },
+  // };
 
   return (
-    <section
-      id="contact"
-      className="py-20 bg-gradient-to-b from-soft-beige to-warm-green"
-    >
-      <div className="container mx-auto px-4">
+     <section id="contact" className="contact-section">
+      <div className="container">
         <motion.div
-          variants={containerVariants}
+          variants={{ hidden: {}, visible: {} }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-warm-green mb-4">
-              Get In Touch
-            </h2>
-            <div className="w-24 h-1 bg-traditional-gold mx-auto mb-6"></div>
-            <p className="text-lg text-warm-green/80 max-w-2xl mx-auto">
-              Ready to book your mehndi session? Contact us today for beautiful
-              henna art
+          <div className="contact-header">
+            <h2 className="section-title">Get In Touch</h2>
+            <div className="section-divider"></div>
+            <p className="section-subtitle">
+              Ready to book your mehndi session? Contact us today for beautiful henna art
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <div>
-                <h3 className="text-3xl font-heading font-bold text-warm-green mb-6">
-                  Contact Information
-                </h3>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {contactInfo.map((info, index) => (
-                    <motion.a
-                      key={index}
+          <div className="contact-content-wrapper">
+            {/* Left Side: Contact Info + Working Hours */}
+            <div className="contact-left">
+              {/* Contact Info */}
+              <div className="contact-info">
+                <h3>Contact Information</h3>
+                <div className="contact-details">
+                  {contactInfo.map((info, idx) => (
+                    <a
+                      key={idx}
                       href={info.action}
-                      target={
-                        info.action.startsWith("http") ? "_blank" : undefined
-                      }
-                      rel={
-                        info.action.startsWith("http")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      className="bg-warm-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-traditional-gold/20 hover:border-traditional-gold/40 group"
+                      target={info.action.startsWith("http") ? "_blank" : undefined}
+                      rel={info.action.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="contact-detail"
                     >
-                      <div className="flex items-start space-x-4">
-                        <div className="bg-traditional-gold/20 p-3 rounded-full group-hover:bg-traditional-gold/30 transition-colors duration-300">
-                          <info.icon
-                            className="text-traditional-gold"
-                            size={24}
-                          />
+                      <div className="contact-detail-header">
+                        <div className="contact-detail-icon">
+                          <info.icon size={24} />
                         </div>
-                        <div className="flex-1">
-                          <h4 className="font-heading font-semibold text-warm-green mb-1">
-                            {info.title}
-                          </h4>
-                          <p className="text-warm-green font-medium mb-1">
-                            {info.details}
-                          </p>
-                          <p className="text-warm-green/70 text-sm">
-                            {info.description}
-                          </p>
+                        <div>
+                          <h4 className="contact-detail-title">{info.title}</h4>
+                          <p className="contact-detail-content">{info.details}</p>
+                          <p className="contact-detail-desc">{info.description}</p>
                         </div>
                         {info.action.startsWith("http") && (
-                          <ExternalLink
-                            size={16}
-                            className="text-warm-green/50 group-hover:text-traditional-gold transition-colors duration-300"
-                          />
+                          <ExternalLink className="ml-auto" size={16} />
                         )}
                       </div>
-                    </motion.a>
+                    </a>
                   ))}
                 </div>
               </div>
 
               {/* Working Hours */}
-              <div>
-                <h4 className="text-2xl font-heading font-bold text-warm-green mb-6 flex items-center">
-                  <Clock className="mr-3 text-traditional-gold" size={28} />
-                  Working Hours
-                </h4>
-                <div className="bg-warm-white rounded-2xl p-6 shadow-lg border border-traditional-gold/20">
-                  <div className="space-y-4">
-                    {workingHours.map((schedule, index) => (
-                      <div
-                        key={index}
-                        className="flex justify-between items-center py-2 border-b border-traditional-gold/10 last:border-b-0"
-                      >
-                        <span className="font-medium text-warm-green">
-                          {schedule.day}
-                        </span>
-                        <span className="text-traditional-gold font-semibold">
-                          {schedule.time}
-                        </span>
+              <div className="working-hours">
+                <h3 className="section-subtitle-icon">
+                  
+                </h3>
+                <div className="hours-card">
+                 <h1 className="yo"> <Clock className="icon" size={28} /> Working Hours</h1>
+                  <div className="hours-list">
+                    {workingHours.map((schedule, idx) => (
+                      <div key={idx} className="hour-row">
+                        <span>{schedule.day}</span>
+                        <span>{schedule.time}</span>
                       </div>
                     ))}
                   </div>
-                  <div className="mt-4 p-4 bg-traditional-gold/10 rounded-xl">
-                    <p className="text-warm-green/80 text-sm">
-                      <strong>Note:</strong> We also provide home visits across
-                      Noida and nearby areas. Special arrangements available for
-                      weddings and large events.
-                    </p>
-                  </div>
+                  <p className="hours-note">
+                    We also provide home visits across Noida and nearby areas. Special arrangements available for weddings and large events.
+                  </p>
                 </div>
               </div>
+            </div>
 
+            {/* Right Side: Location + Map + Quick Booking */}
+            <div className="contact-right">
               {/* Location */}
-              <div>
-                <h4 className="text-2xl font-heading font-bold text-warm-green mb-6 flex items-center">
-                  <MapPin className="mr-3 text-traditional-gold" size={28} />
-                  Our Location
-                </h4>
-                <div className="bg-warm-white rounded-2xl p-6 shadow-lg border border-traditional-gold/20">
-                  <div className="space-y-3">
-                    <h5 className="font-heading font-semibold text-warm-green text-lg">
-                      Krishna Mehandi Artist Studio
-                    </h5>
-                    <p className="text-warm-green/80">
-                      Amrapali Zodiac Market, Sector-120
-                      <br />
-                      Near Apollo Medical
-                      <br />
-                      Noida, Uttar Pradesh - 201301
-                    </p>
-                    <div className="flex flex-wrap gap-3 mt-4">
-                      <span className="bg-traditional-gold/20 text-traditional-gold px-3 py-1 rounded-full text-sm font-medium">
-                        Easy Parking
-                      </span>
-                      <span className="bg-traditional-gold/20 text-traditional-gold px-3 py-1 rounded-full text-sm font-medium">
-                        Metro Accessible
-                      </span>
-                      <span className="bg-traditional-gold/20 text-traditional-gold px-3 py-1 rounded-full text-sm font-medium">
-                        Home Visits Available
-                      </span>
-                    </div>
+              <div className="location">
+                <h3 className="section-subtitle-icon">
+                  <MapPin className="icon" size={28} /> Our Location
+                </h3>
+                <div className="location-card">
+                  <h4 className="location-title">Krishna Mehandi Artist Studio</h4>
+                  <p className="location-address">
+                    Amrapali Zodiac Market, Sector-120<br />
+                    Near Apollo Medical<br />
+                    Noida, Uttar Pradesh - 201301
+                  </p>
+                  <div className="location-tags">
+                    <span>Easy Parking</span>
+                    <span>Metro Accessible</span>
+                    <span>Home Visits Available</span>
                   </div>
                 </div>
               </div>
-            </motion.div>
 
-            {/* Map */}
-            <motion.div variants={itemVariants} className="space-y-6">
-              <h3 className="text-3xl font-heading font-bold text-warm-green">
-                Find Us Here
-              </h3>
-
-              <div className="bg-warm-white rounded-2xl overflow-hidden shadow-lg border border-traditional-gold/20">
-                <div className="aspect-[4/3] relative">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.8234567890123!2d77.3910!3d28.5355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5456789abcd%3A0x1234567890abcdef!2sAmrapali%20Zodiac%20Market%2C%20Sector%20120%2C%20Noida%2C%20Uttar%20Pradesh%20201301!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="absolute inset-0"
-                  ></iframe>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h5 className="font-heading font-semibold text-warm-green mb-1">
-                        Amrapali Zodiac Market
-                      </h5>
-                      <p className="text-warm-green/70 text-sm">
-                        Sector-120, Near Apollo Medical, Noida
-                      </p>
-                    </div>
-                    <motion.a
-                      href="https://maps.google.com/?q=Amrapali+Zodiac+Market+Sector+120+Noida"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-traditional-gold text-warm-green px-4 py-2 rounded-full font-medium hover:bg-traditional-gold-light transition-colors duration-300 flex items-center space-x-2"
-                    >
-                      <span>Directions</span>
-                      <ExternalLink size={16} />
-                    </motion.a>
-                  </div>
-                </div>
+              {/* Map */}
+              <h3 className='map-col' >Find Us Here</h3>
+              <div className="map-card">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.8234567890123!2d77.3910!3d28.5355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5456789abcd%3A0x1234567890abcdef!2sAmrapali%20Zodiac%20Market%2C%20Sector%20120%2C%20Noida%2C%20Uttar%20Pradesh%20201301!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
 
               {/* Quick Booking CTA */}
-              <div className="bg-warm-white rounded-2xl p-8 shadow-lg border border-traditional-gold/20 text-center">
-                <h4 className="text-2xl font-heading font-bold text-warm-green mb-4">
-                  Ready to Book?
-                </h4>
-                <p className="text-warm-green/80 mb-6">
-                  Contact us now for instant booking and consultation
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <motion.a
-                    href="https://wa.me/919873382317"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex-1 bg-traditional-gold text-warm-green px-6 py-4 rounded-full font-semibold hover:bg-traditional-gold-light transition-colors duration-300 flex items-center justify-center space-x-2"
-                  >
-                    <MessageCircle size={20} />
-                    <span>WhatsApp Now</span>
-                  </motion.a>
-                  <motion.a
-                    href="tel:+919873382317"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex-1 bg-accent-maroon text-white px-6 py-4 rounded-full font-semibold hover:bg-accent-maroon-light transition-colors duration-300 flex items-center justify-center space-x-2"
-                  >
-                    <Phone size={20} />
-                    <span>Call Now</span>
-                  </motion.a>
+              <div className="quick-booking">
+                <h4>Ready to Book?</h4>
+                <p>Contact us now for instant booking and consultation</p>
+                <div className="cta-buttons">
+                  <a href="https://wa.me/919873382317" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
+                    <MessageCircle size={20} /> WhatsApp Now
+                  </a>
+                  <a href="tel:+919873382317" className="btn btn-call">
+                    <Phone size={20} /> Call Now
+                  </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>

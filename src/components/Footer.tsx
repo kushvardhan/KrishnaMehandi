@@ -2,13 +2,13 @@
 
 import { motion } from "framer-motion";
 import {
-    ExternalLink,
-    Heart,
-    Camera,
-    Mail,
-    MapPin,
-    MessageCircle,
-    Phone,
+  Instagram,
+  ExternalLink,
+  Heart,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
 } from "lucide-react";
 
 export default function Footer() {
@@ -48,34 +48,16 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
             className="footer-brand"
           >
-            <div className="footer-logo">Krishna Mehandi Artist</div>
-            <p className="footer-tagline">
-              Professional Bridal Mehndi Designer in Noida, specializing in
-              traditional and modern henna art for weddings and special
-              occasions.
-            </p>
-            <div className="footer-social">
-              <motion.a
-                href="https://www.instagram.com/krishnamehandi2024"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="footer-social-link"
-              >
-                <Camera size={20} />
-              </motion.a>
-              <motion.a
-                href="https://wa.me/919873382317"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="footer-social-link"
-              >
-                <MessageCircle size={20} />
-              </motion.a>
-            </div>
+           <div className="footer-brand-section">
+  <div className="footer-logo">Krishna Mehandi Artist</div>
+  <p className="footer-description">
+    Professional Bridal Mehndi Designer in Noida, specializing in traditional and modern henna art for weddings and special occasions.
+  </p>
+  <div className="footer-social">
+    <div className="footer-social"> <motion.a href="https://www.instagram.com/krishnamehandi2024" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="footer-social-link" > <Instagram size={20} /> </motion.a> <motion.a href="https://wa.me/919873382317" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="footer-social-link" > <MessageCircle size={20} /> </motion.a> </div>
+  </div>
+</div>
+            
           </motion.div>
 
           {/* Links Section */}
@@ -173,14 +155,16 @@ export default function Footer() {
               <Heart size={14} className="text-accent-maroon fill-current inline" />
               <span> by </span>
               <motion.a
-                href="https://kush-personal-portfolio-my-portfolio.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-              >
-                Kush Vardhan
-                <ExternalLink size={12} className="inline ml-1" />
-              </motion.a>
+  title="kushvardhan39797@gmail.com"
+  href="https://kush-personal-portfolio-my-portfolio.vercel.app/"
+  target="_blank"
+  rel="noopener noreferrer"
+  whileHover={{ scale: 1.05 }}
+  className="developer-link"
+>
+  <h1 className="developer-name">Kush Vardhan</h1>
+  <ExternalLink size={12} style={{ marginLeft: "4px" }} />
+</motion.a>
             </div>
           </motion.div>
         </div>
